@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+    rel="stylesheet" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK"
+    crossorigin="anonymous">
+
+    <style>
+        :root {
+            --con-none: #D13333;
+            --con-none2: #e83c3c;
+
+            --con-med: #FF9947;
+            --con-med2: #ffaf47;
+
+            --con-high: #03BD5B;
+            --con-high2: #03d866;
+
+            --con-outline: #949494;
+            --con-color: #353535;
+        }
+
+
+        .con-level {
+            width: 8rem;
+            border-radius: 1rem;
+            border-color: var(--con-outline);
+            color: var(--con-color);
+            background-color: white;
+
+        }
+
+        /* Contribution level - NONE*/
+        .con-level-none:hover {
+            background-color: var(--con-none2) !important;
+            border-color: var(--con-none2) !important;
+        }
+
+        .con-level-none:active,
+        .con-level-none-active {
+            background-color: var(--con-none) !important;
+            border-color: var(--con-none) !important;
+            color: white;
+        }
+
+        /* Contribution level - MED*/
+        .con-level-medium:hover {
+            background-color: var(--con-med2) !important;
+            border-color: var(--con-med2) !important;
+        }
+
+        .con-level-medium:active,
+        .con-level-medium-active {
+            background-color: var(--con-med) !important;
+            border-color: var(--con-med) !important;
+            color: white;
+        }
+
+        /* Contribution level - HIGH*/
+        .con-level-high:hover {
+            background-color: var(--con-high2) !important;
+            border-color: var(--con-high2) !important;
+        }
+
+        .con-level-high:active,
+        .con-level-high-active {
+            background-color: var(--con-high) !important;
+            border-color: var(--con-high) !important;
+            color: white;
+        }
+    </style>
+
+
+</head>
+
+<body style="background-color: whitesmoke;">
+    <!-- Section: Profile -->
+    <section id="profile">
+        <div class="container mt-3 pb-5" style="background-color: white;">
+            <div class="row">
+                <!-- Upper section (user title and edit button) -->
+                <div class="d-flex">
+                    <!-- User header -->
+                    <div class="p-2 flex-grow-1">
+                        <div class="d-flex align-items-center">
+                            <h2 class="me-3" style="display: inline;">John Smith</h2>
+                            <img class="me-1" src="../../public/images/badges/badge-leaf.png" height="25" alt="Badge"
+                                class="badge-image">
+                            <span class="badge rounded-pill text-bg-danger ms-1">Admin</span>
+                            <span class="badge rounded-pill text-bg-dark ms-1"
+                                style="background-color: rgb(255, 102, 0) !important;">#1</span>
+
+                        </div>
+                    </div>
+                    <!-- Edit button -->
+                    <div class="p-2">
+                        <div class="d-flex justify-content-start">
+                            <a href="#" class="btn btn-outline-primary">
+                                <p style="display: inline; margin: 0;">Edit</p>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Left, profile and bio -->
+                <div class="col-md-5">
+                    <div class="px-2">
+                        <h5 class="fs-5" style="font-weight: 400;">About</h5>
+                        <p class="mb-0">Email: John@Smith.com</p>
+                        <p class="mb-0">Contact number: 0757 123123</p>
+                        <p>And othe relevant info goes here...</p>
+                    </div>
+
+                </div>
+
+                <!-- Progress -->
+                <div class="col-lg-3">
+                    <div>
+                        <h5 class="fs-5" style="font-weight: 400;">Green Progress</h5>
+                        <p class="mb-0"> Green Points: 75</p>
+                        <p>Green Status: None</p>
+                    </div>
+
+
+                </div>
+                <!-- Badges -->
+                <div class="col-lg-4">
+                    <div class="w-100">
+                        <h5 class="fs-5" style="font-weight: 400;">Badges</h5>
+
+                        <!-- Badge -->
+                        <div>
+                            <span>
+                                <img class="me-1" src="../../public/images/badges/badge-leaf.png" height="25"
+                                    alt="Badge" class="badge-image">
+                                Green Status <span class="text-muted">- 100 points</span>
+                            </span>
+                        </div>
+
+                        <!-- Badge -->
+                        <div>
+                            <span class="opacity-25">
+                                <img class="me-1" src="../../public/images/badges/badge-battery.png" height="25"
+                                    alt="Badge" class="badge-image">
+                                Energy Saver <span class="text-muted">- 30 points in energy saving</span>
+                            </span>
+                        </div>
+
+                        <!-- Badge -->
+                        <div>
+                            <span class="opacity-25">
+                                <img class="me-1" src="../../public/images/badges/badge-recycle.png" height="25"
+                                    alt="Badge" class="badge-image">
+                                Master Recycler <span class="text-muted">- 20 points in recycling</span>
+                            </span>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Green Action  -->
+    <section id="greenactions">
+        <div class="container mt-5">
+            <h4>Green Actions</h4>
+            <hr style="width: 100%; border-top: 1px solid; color:text-muted;">
+
+            <!-- New action -->
+            <div class="mt-3">
+                <h5>Add new action:</h5>
+
+                <!-- <div class="container text-center">
+                    <p>No Actions to add.</p>
+                </div> -->
+                <form class="row" action="">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-muted mt-0">Action name:</p>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select action</option>
+                                <option value="1">Action 1</option>
+                                <option value="2">Action 2</option>
+                                <option value="3">Action 3</option>
+                            </select>
+                        </div>
+
+
+                        <!-- Contribution Level selector -->
+                        <div class="col-xxl-4">
+                            <p>Contribution level:</p>
+
+                            <button name="con-level-none" type="button"
+                                class="btn btn-outline-primary con-level con-level-none">
+                                NONE
+                            </button>
+
+                            <button name="con-level-medium" type="button"
+                                class="btn btn-outline-primary con-level con-level-medium">
+                                MEDIUM
+                            </button>
+
+                            <button name="con-level-high" type="button"
+                                class="btn btn-outline-primary con-level con-level-high">
+                                HIGH
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <span class="text-muted mt-2">Action description:</span>
+                    <span class="lead text-muted fs-6">This action is all about...</span>
+
+                    <!-- New Action - Submit button -->
+                    <div class="row">
+                        <div class="container mt-4">
+                            <button type="submit" type class="btn btn-primary" style="width: auto;">Add Action</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Previous/History GreenAction -->
+    <section id="action-history">
+        <div id="actions-list" class="container" style="margin-top: 5rem;">
+            <h4>Your Green Actions</h4>
+            <hr>
+
+            <!-- <div class="container text-center">                
+                <p>No GreenActions found.</p>
+            </div> -->
+
+
+            <!-- Action -->
+            <div class="container d-flex mb-2" style="background-color: white; border-radius: 0.5rem; height: 4rem;">
+                <!-- Left side -->
+                <h5 class="align-self-center lead">Sustainability Action Name 1</h5>
+                <p class="text-muted align-self-center p-2 mb-1 ms-3 flex-fill">Short description of the action goes here...</p>
+
+                <!-- Right side -->
+                <div class="align-items-center d-flex ">
+                    <span class="me-3">Contribution Level: </span>
+                    <div class="btn btn-outline-primary con-level con-level-medium-active" >MEDIUM</div>
+                    <button name="remove-action" class=" btn btn-outline-danger fs-6 pt-0" style="border-radius: 1rem; font-weight: 600; margin-inline-start: 5rem; ">x</button>
+                </div>
+            </div>
+
+            <!-- Action 2-->
+            <div class="container d-flex mb-2" style="background-color: white; border-radius: 0.5rem; height: 4rem;">
+                <!-- Left side -->
+                <h5 class="align-self-center lead">Sustainability Action Name 1</h5>
+                <p class="text-muted align-self-center p-2 mb-1 ms-3 flex-fill">Short description of the action goes here...</p>
+
+                <!-- Right side -->
+                <div class="align-items-center d-flex ">
+                    <span class="me-3">Contribution Level: </span>
+                    <div class="btn btn-outline-primary con-level con-level-none-active" >NONE</div>
+                    <button name="remove-action" class=" btn btn-outline-danger fs-6 pt-0" style="border-radius: 1rem; font-weight: 600; margin-inline-start: 5rem; ">x</button>
+                </div>
+            </div>
+
+            <!-- Action 3-->
+            <div class="container d-flex mb-2" style="background-color: white; border-radius: 0.5rem; height: 4rem;">
+                <!-- Left side -->
+                <h5 class="align-self-center lead">Sustainability Action Name 1</h5>
+                <p class="text-muted align-self-center p-2 mb-1 ms-3 flex-fill">Short description of the action goes here...</p>
+
+                <!-- Right side -->
+                <div class="align-items-center d-flex ">
+                    <span class="me-3">Contribution Level: </span>
+                    <div class="btn btn-outline-primary con-level con-level-high-active" >HIGH</div>
+                    <button name="remove-action" class=" btn btn-outline-danger fs-6 pt-0" style="border-radius: 1rem; font-weight: 600; margin-inline-start: 5rem; ">x</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Empty spacer -->
+    <div style="padding-top: 20rem;"></div>
+
+
+
+   
+
+
+    <!--  Contribution level script-->
+    <script>
+        const buttons = document.querySelectorAll('.con-level');
+
+        // Ensure only one is active
+        function handleClick(event) {
+            const isActive = this.classList.contains(this.name + '-active')
+            buttons.forEach(button => {
+                button.classList.remove(button.name + '-active');
+            });
+
+            // Skip if already active
+            if (!isActive) {
+                this.classList.add(this.name + '-active');
+            }
+        }
+
+        buttons.forEach(button => {  button.addEventListener('click', handleClick); });
+    </script>
+
+
+    <script>
+        // Get all closing buttons within the green actions
+        const deleteButtons = document.querySelectorAll('button[name="remove-action"]');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove closest container
+                const container = this.closest('.container');
+                container.remove();
+
+                 // Check if last action was removed
+                const remainingActions = document.getElementById('actions-list').children.length;
+                if (remainingActions === 2) {
+                    // Add error paragraph
+                    const noActionsParagraph = document.createElement('p');
+                    noActionsParagraph.textContent = 'No actions found.';
+                    document.getElementById('actions-list').appendChild(noActionsParagraph);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

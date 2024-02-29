@@ -1,0 +1,63 @@
+:root {
+    --con-none: #D13333;
+    --con-none2: #e83c3c;
+
+    --con-med: #FF9947;
+    --con-med2: #ffaf47;
+
+    --con-high: #03BD5B;
+    --con-high2: #03d866;
+
+    --con-outline: #949494;
+    --con-color: #353535;
+}
+
+
+.con-level {
+    width: 8rem !important;
+    border-radius: 1rem !important;
+    border-color: var(--con-outline) !important;
+    color: var(--con-color) !important;
+    background-color: white !important;
+
+}
+
+/* Contribution level - NONE*/
+.con-level-none:hover {
+    /* background-color: var(--con-none2) !important; */
+    border-color: var(--con-none2) !important;
+}
+
+.con-level-none:active,
+.con-level-none-active {
+    background-color: var(--con-none) !important;
+    border-color: var(--con-none) !important;
+    color: white !important;
+}
+
+
+/* Contribution level - MED*/
+.con-level-medium:hover {
+    /* background-color: var(--con-med2) !important; */
+    border-color: var(--con-med2) !important;
+}
+
+.con-level-medium:active,
+.con-level-medium-active {
+    background-color: var(--con-med) !important;
+    border-color: var(--con-med) !important;
+    color: white !important;
+}
+
+/* Contribution level - HIGH*/
+.con-level-high:hover {
+    /* background-color: var(--con-high2) !important; */
+    border-color: var(--con-high2) !important;
+}
+
+.con-level-high:active,
+.con-level-high-active {
+    background-color: var(--con-high) !important;
+    border-color: var(--con-high) !important;
+    color: white !important;
+}

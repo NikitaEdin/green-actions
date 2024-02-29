@@ -1,0 +1,47 @@
+<form class="row" action="">
+    <div class="row">
+        <div class="col">
+            <p class="text-muted mt-0">Action name:</p>
+            <select aria-placeholder="Select" id="greenActionDropdown" class="form-select" aria-label="Select Action">
+                <option selected>Select Green Action</option>
+                @foreach($greenActions as $greenAction)
+                    <option data-description="{{ $greenAction->action_description }}" value="{{ $greenAction->id }}">{{ $greenAction->action_name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Contribution Level selector -->
+        <div class="col-lg-5">
+            <p>Contribution level:</p>
+            <button name="con-level-none" type="button"
+                class="btn btn-outline-primary con-level con-level-none">
+                NONE
+            </button>
+
+            <button name="con-level-medium" type="button"
+                class="btn btn-outline-primary con-level con-level-medium">
+                MEDIUM
+            </button>
+
+            <button name="con-level-high" type="button"
+                class="btn btn-outline-primary con-level con-level-high">
+                HIGH
+            </button>
+        </div>
+    </div>
+
+    
+    
+    <span id="actionDescription-title" class="text-muted mt-2" style="display: none;">Action description:</span>
+    <span id="actionDescription" style="display: none;" class="lead fs-6">test</span> 
+    
+        
+   
+
+    <!-- New Action - Submit button -->
+    <div class="row">
+        <div class="container mt-4">
+            <button type="submit" type class="btn btn-primary" style="width: auto;">Add Action</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,60 @@
+:root {
+    --green-accent: #03BD5B;
+    --green-accent-hover: #04a24e;
+    --green-accent-press: #048c44;
+}
+
+.btn-primary{
+    background-color: var(--green-accent) !important;
+    border-color: var(--green-accent) !important;
+}
+
+.btn-primary:hover{
+    background-color: var(--green-accent-hover) !important;
+    border-color: var(--green-accent-hover)!important;
+}
+
+.btn-primary:active {
+    background-color: var(--green-accent-press) !important;
+    border-color: var(--green-accent-press) !important;
+}
+
+.btn-primary:visited {
+    background-color:  var(--green-accent-press) !important;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem #03bd5b80 !important; /* Using the base color for focus */
+}
+
+.btn-primary:active {
+    color: #fff;
+    background-color: var(--green-accent-press) !important;
+    border-color: var(--green-accent-press) !important;
+}
+
+
+/* Green line under topic headers*/
+.green-line {
+    position: relative;
+    display: inline-block;
+}
+
+.green-line::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 3px;
+    background-color: var(--green-accent);
+    ;
+    content: "";
+}
+
+
+
+
+
