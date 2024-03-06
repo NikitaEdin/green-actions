@@ -1,8 +1,12 @@
+
+
 :root {
     --green-accent: #03BD5B;
     --green-accent-hover: #04a24e;
     --green-accent-press: #048c44;
 }
+
+/* ///////////////////// Primary Buttons ///////////////////// */
 
 .btn-primary{
     background-color: var(--green-accent) !important;
@@ -35,7 +39,7 @@
 }
 
 
-/* Green line under topic headers*/
+/* ///////////////////// Green line under topic headers /////////////////////*/
 .green-line {
     position: relative;
     display: inline-block;
@@ -53,8 +57,3 @@
     ;
     content: "";
 }
-
-
-
-
-

@@ -1,5 +1,6 @@
 @extends('layout.layout')
-@section('title', 'Sustainability')
+{{-- @section('title', 'Sustainability') --}}
+<title>Sustainability - GreenActions</title>
 
 @section('content')
 

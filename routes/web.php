@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //// DEV ////
-Route::get('/test', function () {
-    return view('landingpage');
-});
+// Route::get('/settings', function () {
+//     return view('settings');
+// });
 
 
 //// HOME ////
@@ -43,3 +44,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //// User Profile ////
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
+// edit profile
+Route::get('/profile/edit', [UserController::class, 'updateDetails'])->middleware('auth')->name('updateDetails');
+Route::post('/profile/edit', [UserController::class, 'update'])->middleware('auth');
+
+// Users (public view)
+Route::get('/users/{id}', [UserController::class, 'showUser'])->name('user.show');
+
+
+//// Account Settings ////
+Route::get('/settings', [SettingsController::class, 'show'])->middleware('auth')->name('settings');

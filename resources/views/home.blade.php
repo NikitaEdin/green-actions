@@ -1,5 +1,7 @@
 @extends('layout.layout')
-@section('title', 'Home')
+{{-- @section('title', 'Home') --}}
+
+<title>Home - GreenActions</title>
 
 @section('content')
     <style>

@@ -129,7 +129,7 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="mx-2">{{ Auth()->User()->username }}</span>
+                                <span class="mx-2">{{ Auth()->User()->displayNameFull() }}</span>
                                     <div class="profile-pic">
                                         <i class="fas fa-user-circle"></i>
                                     </div>
@@ -138,7 +138,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fa-solid fa-user fa-fw"></i>
                                             Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i>
+                                    <li><a class="dropdown-item" href="{{ route('settings') }}"><i class="fas fa-cog fa-fw"></i>
                                             Settings</a></li>
                                     <li>
                                         <hr class="dropdown-divider">

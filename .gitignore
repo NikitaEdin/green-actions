@@ -17,4 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# laravel/livewire indexing
 _ide_helper*
+
+# Practice files
+/lab/*

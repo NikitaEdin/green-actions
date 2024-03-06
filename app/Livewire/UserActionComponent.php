@@ -11,9 +11,13 @@ use Livewire\Attributes\On;
 class UserActionComponent extends Component {
 
     public $userActions;
+    public $user;
+    public $disableEdits = false;
 
-    public function mount($userActions){
+    public function mount($userActions, $user, $disableEdits = false){
         $this->userActions = $userActions;
+        $this->user = $user;
+        $this->disableEdits = $disableEdits;
     }
 
     // Remove specific green action from account

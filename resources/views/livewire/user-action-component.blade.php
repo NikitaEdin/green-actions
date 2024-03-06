@@ -37,8 +37,12 @@
                         {{ $userAction->points === 0 ? 'NONE' : ($userAction->points === 5 ? 'MEDIUM' : 'HIGH') }}
                     </div>
                     <!-- Button to remove action -->
-                    <button wire:click="removeAction(({{ $userAction->id }}))" class=" btn btn-outline-danger fs-6 pt-0"
-                        style="border-radius: 1rem; font-weight: 600; margin-inline-start: 1rem;">x</button>
+                    @auth
+                        @if ((Auth::user()->id == $user->id && !$disableEdits )  || Auth::user()->isAdmin() ) <!-- self or admin -->
+                            <button wire:click="removeAction(({{ $userAction->id }}))" class=" btn btn-outline-danger fs-6 pt-0"
+                                style="border-radius: 1rem; font-weight: 600; margin-inline-start: 1rem;">x</button>
+                        @endif
+                    @endauth
                 </div>
             </div>
         @endforeach

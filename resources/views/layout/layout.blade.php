@@ -5,7 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') - GreenActions</title>
+
+    {{-- <title>
+        @if (View::hasSection('title'))
+          @yield('title') - GreenActions
+        @else
+          GreenActions
+        @endif
+      </title>
+       --}}
+      
+   
 
 
     <!-- Fonts -->
