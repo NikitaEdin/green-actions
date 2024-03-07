@@ -81,7 +81,7 @@
                           
                             @if ($user->hasCard())
                                 <div class="mb-1">
-                                    <p>Current saved card ends with {{ $user->getCard()->getCardDisplay()}}.</p>
+                                    <p>Current saved card ends with: <span class="fs-5">{{ $user->getCard()->getCardDisplay()}}</span>.</p>
                                 </div>
                             @endif
 

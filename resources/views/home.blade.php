@@ -1,8 +1,6 @@
 @extends('layout.layout')
 {{-- @section('title', 'Home') --}}
 
-<title>Home - GreenActions</title>
-
 @section('content')
     <style>
         /* hero section*/
@@ -56,6 +54,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <body>
+        <title>Home - GreenActions</title>
         <!-- Hero Section -->
         <section class="hero-section text-center">
             <div class="container">

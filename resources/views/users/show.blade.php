@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Profile')
+{{-- @section('title', 'Profile') --}}
 
 @section('content')
 

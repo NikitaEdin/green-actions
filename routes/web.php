@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 //// HOME ////
 Route::get('/', function(){return view('home');})->name('home');
+Route::get('/home', function(){return view('home');})->name('home');
 
 //// Infomation pages////
 Route::get('/sustainability', function(){return view('information.sustainability');})->name('sustainability');
@@ -34,13 +36,17 @@ Route::get('/sustainability', function(){return view('information.sustainability
 // Route::get('/', function(){return view('pricing');})->name('pricing');
 
 //// Register ////
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'store']);
+Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 
 //// Login ////
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'authenticate']);
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//// Forgot password ////
+Route::get('/forgot-password', [ForgotPasswordController::class, 'show'])->name('forgot-password')->middleware('guest');
+
 
 //// User Profile ////
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');

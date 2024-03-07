@@ -96,8 +96,7 @@
 
 
                         <div class="input-group mb-3 mt-5">
-                            <button type="submit"
-                                class="btn btn-lg btn-primary w-100 fs-6">Update Details</button>
+                            <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Update Details</button>
                         </div>
                     </form>
                   

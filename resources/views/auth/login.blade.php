@@ -18,13 +18,10 @@
 
 </head>
 <body>
-
-    
     <div class="container-fluid p-3 bg-body-tertiary" style="position: absolute; top:0; left:0; width: 100%; z-index:1;">
         <a class="nav-link" style="color: var(--green-accent);" aria-current="page" href="{{ route('home') }}">
             <i class="fas fa-arrow-left me-1"></i>Home</a>
     </div>
-
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="border-2 rounded-3 p-3 bg-white shadow" style="max-width: 400px;"> 
@@ -71,6 +68,15 @@
                             @error('password')
                                 <span class="form-label d-block fs-6 text-danger">{{ $message }}</span>
                             @enderror
+
+
+                            {{-- Forgot password? --}}
+                            <div class="row justify-content-end m-0">
+                                <div class="col-auto">
+                                    <a  href="{{ route('forgot-password') }}">Forgot Password?</a>
+                                </div>
+                                
+                            </div>
                         </div>
 
                         <div class="mb-3">
