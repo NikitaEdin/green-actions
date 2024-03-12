@@ -213,7 +213,7 @@
 
                                     <!-- Button -->
                                     <div class="container text-center mt-5">
-                                        <div class="btn btn-primary d-md-block p-2 mx-5">GET STARTED</div>
+                                        <div onclick="window.location='{{ route('sub') }}';" class="btn btn-primary d-md-block p-2 mx-5">GET STARTED</div>
                                     </div>
                                 </div>
 

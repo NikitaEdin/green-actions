@@ -89,7 +89,7 @@
 
 
                         <div class="row">
-                            <small>Don't have account? <a href="{{ route('register') }}">Register</a></small>
+                            <small>Don't have an account? <a href="{{ route('register') }}">Register</a></small>
                         </div>
 
                         <div class="input-group mb-3 mt-2">

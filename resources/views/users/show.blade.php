@@ -136,28 +136,41 @@
                 <!-- New action -->
                 <div class="mt-3">
 
-
                     <!-- <div class="container text-center">
                         <p>No Actions to add.</p>
                     </div> -->
+
+
                     {{-- Add new Action --}}
-                    @livewire('add-green-action', ['greenActions' => $greenActions])
+                    @if ($user->hasValidSubscription() || $user->isAdmin())
+                        @livewire('add-green-action', ['greenActions' => $greenActions])
+                    @else
+                    <div class="row py-2" style="background-color: white; border-radius: 0.5rem;">
+                        <div class="col text-center">
+                            <p>GreenActions are not available for Free Tier Account.</p>
+                            <p><a href="{{ route('sub') }}">Upgrade your account</a> to unlock this feature.</p>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </section>
 
 
         <!-- Previous/History GreenAction -->
-        <section id="action-history">
-            <div id="actions-list" class="container" style="margin-top: 5rem;">
-                <h4>Your Green Actions</h4>
-                <hr>
+        @if ($user->hasValidSubscription() || $user->isAdmin())
+            <section id="action-history">
+                <div id="actions-list" class="container" style="margin-top: 5rem;">
+                    <h4>Your Green Actions</h4>
+                    <hr>
 
-                @livewire('user-action-component', ['userActions' => $user->getUserActions, 'user'=> $user])
+                    {{-- Livewire: view and manage existing green actions --}}
+                    @livewire('user-action-component', ['userActions' => $user->getUserActions, 'user'=> $user])
 
-            </div>
-        </section>
+                </div>
+            </section>
 
+        @endif
 
         <!-- Empty spacer -->
         <div style="padding-top: 20rem;"></div>

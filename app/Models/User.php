@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -41,14 +42,34 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function permission(){
-        return $this->belongsTo(Permission::class);
-    }
+    public function permission(){ return $this->belongsTo(Permission::class);}
+    public function tickets(){ return $this->hasMany(Ticket::class);}
+    public function subscriptions(){ return $this->hasMany(Subscription::class);}
 
     // Associated card
     public function card(){ return $this->hasOne(Card::class); }
     public function getCard(){ return $this->card()->first(); }
     public function hasCard(){ return $this->card()->exists(); }
+
+    // Subscriptions
+    public function hasValidSubscription() {
+        $latestSubscription = $this->subscriptions()->latest()->first();
+    
+        // Not subscription found
+        if (!$latestSubscription) { return false; }
+    
+        return $latestSubscription->isValid();
+    }
+
+    public function getValidSubscription() {
+        $now = Carbon::now();
+        
+        return $this->subscriptions()
+                    ->where('valid_from', '<=', $now)
+                    ->where('valid_to', '>=', $now)
+                    ->first();
+    }
+    
 
 
     public function displayName(){
@@ -85,5 +106,9 @@ class User extends Authenticatable
 
     public function hasFullDetails(){
         return isset($this->contact) && isset($this->number) && isset($this->bio);
+    }
+
+    public function getTickets(){
+        return Ticket::where('user_id', $this->id);
     }
 }

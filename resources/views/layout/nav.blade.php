@@ -44,9 +44,9 @@
                 right: 0;
                 left: unset;
             }
-
+            
             .profile-menu .fa-fw {
-                margin-right: 10px;
+                margin-right: 20px;
             }
 
             .toggle-change::after {
@@ -78,9 +78,9 @@
                                 <a class="nav-link {{ Route::is('sustainability') ? 'active' : '' }}" href="{{ route('sustainability') }}">Sustainability</a>
                             </li>
                             {{-- Our Mission --}}
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">Our Mission</a>
-                            </li>
+                            </li> --}}
                             {{-- Competition info --}}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -124,17 +124,16 @@
                             
                         
                         {{-- Profile dropdown --}}
-                        <ul class="navbar-nav profile-menu">
+                        <ul class="navbar-nav profile-menu me-3">
                             
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mx-2">{{ Auth()->User()->displayNameFull() }}</span>
                                     <div class="profile-pic">
                                         <i class="fas fa-user-circle"></i>
                                     </div>
                                 </a>
-
+                               
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fa-solid fa-user fa-fw"></i>
                                             Profile</a></li>
@@ -143,6 +142,18 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
+                                    <li><a class="dropdown-item" href="{{ route('sub') }}">
+                                        <img class="fa-fw" src="{{ asset('images/subscription.png') }}" />
+                                        Manage Subscription</a></li>
+                                    <li>
+                                    <li><a class="dropdown-item" href="{{ route('tickets') }}"><i class="fas fa-envelope fa-fw"></i>
+                                        Support Tickets</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    
+
+
                                     <li>    
 
                                     {{-- Logout --}}

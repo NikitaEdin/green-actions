@@ -76,18 +76,12 @@
                     <h3>Payment Details</h3>
                     <hr class="mt-0" style="background-color:darkgray">
                     
-                    <div class="col">
+                    <div class="col-6">
                         <div class="mt-10">
                           
-                            @if ($user->hasCard())
-                                <div class="mb-1">
-                                    <p>Current saved card ends with: <span class="fs-5">{{ $user->getCard()->getCardDisplay()}}</span>.</p>
-                                </div>
-                            @endif
-
                             <div class="row">
                                 <!-- Card number -->
-                                <div class="col-lg-6">
+                                <div class="col">
                                     <p class="mb-0">Debit/Credit Card Number:</p>
                                     <input type="text" name="card-number" wire:model='cardNumber' class="form-control" name="creditCardNumber"
                                         placeholder="XXXX XXXX XXXX XXXX" pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}">
@@ -99,7 +93,7 @@
 
                             <div class="row mt-3">
                                 <!-- Expiration date -->
-                                <div class="col-lg-3">
+                                <div class="col">
                                     <p class="mb-0">Expiration Date:</p>
                                     <input type="text" name="card-date" wire:model='cardDate' class="form-control" placeholder="MM/YY"
                                         pattern="(0[1-9]|1[0-2])\/[0-9]{2}">
@@ -109,7 +103,7 @@
                                 </div>
 
                                 <!-- CVC -->
-                                <div class="col-lg-3">
+                                <div class="col">
                                     <p class="mb-0">CVC: <span class="text-muted fa-sm ms-1"> (3 last digits on the back)</span></p>
                                     <input type="text" name="card-cvc" wire:model='cardCVC' class="form-control" placeholder="XXX">
                                     @error('cardCVC')
@@ -133,6 +127,37 @@
                             @endif
                         </div>
                     </div>
+
+                    {{-- Right col: display saved card for user --}}
+                    @if ($user->hasCard())
+                        <div class="col">
+                            <p>Saved Card:</p>
+                            <div class="container align-self-start col flex-col justify-content-evenly" >
+                                <div style="min-width: 190px; max-width: 350px; background-color: var(--green-accent); border-radius: 0.5rem; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.363)">
+                                    <div class="row pt-2" style="color:white; min-height: 60px;">
+                                        <div class="ms-3 mt-2" >
+                                            <img src="{{ asset('images/nfc-symbol.png') }}" height="25" width="25" />
+                                        </div>
+                                    </div>
+            
+                                    <div class="row-lg-6 mx-0" style="min-height: 50px; display:inline;">
+                                        <span class="ms-3" style="color: white;">••••</span>
+                                        <span class="mx-3" style="color: white;">••••</span>
+                                        <span class="me-3" style="color: white;">••••</span>
+                                        <span style="color: white;">{{ $user->getCard()->getCardDisplay() }}</span>
+                                    </div>
+                                    
+            
+                                    <div class="row mx-0 mt-2" style=" background-color: #12B05D; border-radius: 0rem 0rem 0.5rem 0.5rem;">
+                                        <span class="my-3 ms-2" style="font-size: 18px; color:white; font-weight: 600;">Exp <span style="font-weight: 500; font-size:14;">{{ $user->getCard()->card_date }}</span></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            {{-- Remove saved card --}}
+                            <button wire:click='removeCard' class="m-3 btn btn-danger">Remove Card</button>
+                        </div>
+                    @endif
                 </div>
 
             </div>

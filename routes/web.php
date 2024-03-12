@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SubController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,3 +62,17 @@ Route::get('/users/{id}', [UserController::class, 'showUser'])->name('user.show'
 
 //// Account Settings ////
 Route::get('/settings', [SettingsController::class, 'show'])->middleware('auth')->name('settings');
+
+
+//// Support Tickets ////
+Route::get('/tickets', [TicketController::class, 'show'])->middleware('auth')->name('tickets');
+Route::post('/tickets', [TicketController::class, 'newTicket'])->middleware('auth')->name('newTicket');
+
+// Specific ticket
+Route::get('/ticket/{id}', [TicketController::class, 'ticket'])->middleware('auth')->name('ticket');
+Route::post('/ticket/{id}/add-message', [TicketController::class, 'addMessage'])->middleware('auth')->name('ticket.add-message');
+Route::post('/ticket/{id}/update-status', [TicketController::class, 'updateStatus'])->middleware('auth')->name('ticket.update-status');
+
+
+//// Subscription ////
+Route::get('/subscription', [SubController::class, 'show'])->middleware('auth')->name('sub'); 

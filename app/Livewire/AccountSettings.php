@@ -119,6 +119,16 @@ class AccountSettings extends Component
         session()->flash('success-card', 'Card added successfully!');
     }
 
+    public function removeCard(){
+        // Check if card exists
+        $card = $this->user->getCard();
 
+        // Create card
+        if($card){
+            $card->delete();
+        }
 
+        // Display flash message
+        session()->flash('success-card', 'Card removed successfully!');
+    }
 }
