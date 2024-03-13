@@ -58,8 +58,18 @@
                                 @endif
 
                                 {{-- Compeition Ranking --}}
-                                <span class="badge rounded-pill text-bg-dark ms-1"
-                                    style="background-color: rgb(255, 102, 0) !important;">#1</span>
+                                @if ($compPos === 1)
+                                    <span class="px-3 py-2 badge rounded-pill text-bg-dark ms-1"
+                                        style="background-color: rgb(254, 191, 2) !important;">#1</span>
+                                @elseif($compPos === 2)
+                                    <span class="px-3 py-2 badge rounded-pill text-bg-dark ms-1"
+                                    style="background-color: rgb(158, 152, 143) !important;">#2</span>
+
+                                @elseif($compPos === 3)
+                                    <span class="px-3 py-2 badge rounded-pill text-bg-dark ms-1"
+                                    style="background-color: rgb(206, 95, 5) !important;">#3</span>
+
+                                @endif
 
                             </div>
                         </div>

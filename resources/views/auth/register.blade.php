@@ -76,6 +76,19 @@
                         </div>
 
 
+                        <div class="mt-3 mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" name="termsCheckbox" id="termsCheckbox" type="checkbox" value="">
+                                <label class="form-check-label" for="termsCheckbox">
+                                  <span>I accept the <a href="{{ route('terms') }}">Terms and Service</a> and <a href="">Copyright and Privacy</a>.</span>
+                                </label>
+                                @error('termsCheckbox')
+                                <span class="d-block fs-6 text-danger">{{ $message }}</span>
+                            @enderror
+                              </div>
+                        </div>
+
+
                         <div class="row">
                             <small>Already have an account? <a href="{{ route('login') }}">Login</a></small>
                         </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\LeaderboardsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SubController;
 use App\Http\Controllers\TicketController;
@@ -31,11 +32,12 @@ Route::get('/home', function(){return view('home');})->name('home');
 
 //// Infomation pages////
 Route::get('/sustainability', function(){return view('information.sustainability');})->name('sustainability');
+Route::get('/leaderboards', [LeaderboardsController::class, 'show'])->name('leaderboards');
 // Route::get('/', function(){return view('our-mission');})->name('our-mission');
 // Route::get('/', function(){return view('about-competition');})->name('about-competition');
 // Route::get('/', function(){return view('about-us');})->name('about-us');
-// Route::get('/', function(){return view('terms');})->name('terms');
-// Route::get('/', function(){return view('pricing');})->name('pricing');
+ Route::get('/terms-and-conditions', function(){return view('information.terms');})->name('terms');
+ Route::get('/privacy-policy', function(){return view('information.privacy');})->name('privacy');
 
 //// Register ////
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');

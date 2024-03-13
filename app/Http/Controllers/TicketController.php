@@ -14,8 +14,7 @@ class TicketController extends Controller {
     // my tickets + new
     public function show(){
         $user = Auth::user();
-        $tickets = Auth::user()->getTickets()->orderBy('created_at', 'DESC')->paginate(5);
-        return view('tickets.show', compact('user', 'tickets'));
+        return view('tickets.show', compact('user'));
     }
 
     // on submit - create new ticket & redirect to it

@@ -13,8 +13,9 @@ class UserController extends Controller {
 
     public function show(User $user){
         $greenActions = GreenAction::getAllAvailable();
+        $compPos = LeaderboardsController::isUserInTop10($user->id);
 
-        return view('users.show', compact('user', 'greenActions'));
+        return view('users.show', compact('user', 'greenActions', 'compPos'));
     }
 
     public function updateDetails(){
@@ -46,6 +47,7 @@ class UserController extends Controller {
 
     public function showUser($id){
         $user = User::findOrFail($id);
-        return view('users.show-user', compact('user'));
+        $compPos = LeaderboardsController::isUserInTop10($user->id);
+        return view('users.show-user', compact('user', 'compPos'));
     }
 }

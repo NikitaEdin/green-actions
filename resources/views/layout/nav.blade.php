@@ -57,10 +57,9 @@
 
 
         <body>
-
             <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top navbar-light ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"
+                    <a class="navbar-brand" href="{{ route('home') }}"
                         style="font-weight: 600; color: var(--green-accent);">GreenActions</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -77,12 +76,14 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('sustainability') ? 'active' : '' }}" href="{{ route('sustainability') }}">Sustainability</a>
                             </li>
+
                             {{-- Our Mission --}}
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">Our Mission</a>
                             </li> --}}
+
                             {{-- Competition info --}}
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Competition
@@ -91,6 +92,10 @@
                                     <li><a class="dropdown-item" href="#">About Competition</a></li>
                                     <li><a class="dropdown-item" href="#">Leaderboards</a></li>
                                 </ul>
+                            </li> --}}
+
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is('leaderboards') ? 'active' : '' }}" class="nav-link" href="{{ route('leaderboards') }}">Competition</a>
                             </li>
 
                         </ul>
@@ -106,6 +111,15 @@
                                 </li>
                             </div>
                         @endguest
+
+
+                        {{-- @if ($user->isAdmin()) --}}
+                            {{-- <div class="d-flex navbar-nav mx-5">
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="">Admin Panel</a>
+                                </li>
+                            </div>  --}}
+                        {{-- @endif --}}
 
                         {{-- Auth: show logout for logged in users --}}
                         {{-- @auth

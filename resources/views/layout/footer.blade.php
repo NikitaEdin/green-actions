@@ -31,9 +31,9 @@
   <!-- Footer -->
   <footer class="footer">
         <div class="container d-flex justify-content-center">
-            <a style="color:white;" class="mx-4" href="#">About Us</a>
-            <a style="color:white;" class="mx-4" href="#">Terms and Conditions</a>
-            <a style="color:white;" class="mx-4" href="#">Pricing</a>
+            <a style="color:white;" class="mx-4" href="{{ route('privacy') }}">Privacy Policy</a>
+            <a style="color:white;" class="mx-4" href="{{ route('terms') }}">Terms and Conditions</a>
+            <a href="{{ route('sub') }}" style="color:white;" class="mx-4" href="#">Pricing</a>
         </div>
    
 

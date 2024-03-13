@@ -20,6 +20,12 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:3'
         ]);
 
+        // Accepted terms
+        if (!request()->has('termsCheckbox')) {
+            return redirect()->back()->withInput()->withErrors(['termsCheckbox' => 'Please accept the terms and conditions.']);
+        }
+        
+
         // create user and save to DB
         $user = User::create([
             'username' => $validated['username'],
