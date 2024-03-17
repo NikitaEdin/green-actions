@@ -65,18 +65,20 @@
                         </div>
 
                         {{-- IsSelf --}}
-                        @if ($user->id == Auth::user()->id)
-                            <!-- Back to profile button -->
-                            <div class="p-2">
-                                <div class="d-flex justify-content-start">
-                                    {{-- Public self profile --}}
-                                    <a href="{{ route('profile') }}" class="btn btn-outline-success">
-                                        <p style="display: inline; margin: 0;">Dashboard</p>
-                                        <i class="fa-solid fa-gauge"></i>
-                                    </a>
+                        @auth
+                            @if ($user->id == Auth::user()->id)
+                                <!-- Back to profile button -->
+                                <div class="p-2">
+                                    <div class="d-flex justify-content-start">
+                                        {{-- Public self profile --}}
+                                        <a href="{{ route('profile') }}" class="btn btn-outline-success">
+                                            <p style="display: inline; margin: 0;">Dashboard</p>
+                                            <i class="fa-solid fa-gauge"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        @endauth
                     </div>
 
 

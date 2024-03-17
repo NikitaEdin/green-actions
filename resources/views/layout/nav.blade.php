@@ -77,6 +77,8 @@
                                 <a class="nav-link {{ Route::is('sustainability') ? 'active' : '' }}" href="{{ route('sustainability') }}">Sustainability</a>
                             </li>
 
+                           
+
                             {{-- Our Mission --}}
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">Our Mission</a>
@@ -94,9 +96,17 @@
                                 </ul>
                             </li> --}}
 
+                            {{-- Leaderboards --}}
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('leaderboards') ? 'active' : '' }}" class="nav-link" href="{{ route('leaderboards') }}">Competition</a>
                             </li>
+
+                             {{-- Shop --}}
+                             <li class="nav-item">
+                                <a class="nav-link {{ Route::is('shop') ? 'active' : '' }}" href="{{ route('shop') }}">Shop</a>
+                            </li>
+
+                        
 
                         </ul>
 
@@ -135,7 +145,8 @@
                         @endauth --}}
 
                         @auth
-                            
+                        @livewire('cartbadge')
+
                         
                         {{-- Profile dropdown --}}
                         <ul class="navbar-nav profile-menu me-3">

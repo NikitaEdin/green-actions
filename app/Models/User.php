@@ -45,6 +45,7 @@ class User extends Authenticatable
     public function permission(){ return $this->belongsTo(Permission::class);}
     public function tickets(){ return $this->hasMany(Ticket::class);}
     public function subscriptions(){ return $this->hasMany(Subscription::class);}
+    public function userpoints(){ return $this->hasMany(Userpoints::class);}
 
     // Associated card
     public function card(){ return $this->hasOne(Card::class); }
@@ -96,8 +97,20 @@ class User extends Authenticatable
         return $this->hasMany(UserAction::class)->orderBy('updated_at', 'desc');
     }
 
-    public function getGreenPoints(){
-        return $this->getUserActions()->sum('points');
+    public function getUserPoints(){
+        return $this->hasMany(Userpoints::class)->orderBy('updated_at', 'desc');
+    }
+
+    public function getUserPointSum(){
+        return $this->getUserPoints()->sum('green_points');
+    }
+
+    public function getGreenPoints($clamp = true){
+        if($clamp){
+            return max(0, min(100, $this->getUserActions()->sum('points') + $this->getUserPoints()->sum('green_points')));
+        }else{
+            return $this->getUserActions()->sum('points') + $this->getUserPoints()->sum('green_points');
+        }
     }
 
     public function hasGreenStatus(){

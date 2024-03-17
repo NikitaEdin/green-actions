@@ -123,7 +123,12 @@
                     <div class="col-lg-3">
                         <div>
                             <h5 class="fs-5" style="font-weight: 400;">Green Progress</h5>
-                            <p id="greenpoints" class="mb-0"> Green Points: {{ $user->getGreenPoints() }}</p>
+                            <p id="greenpoints" class="mb-0"> Green Points: {{ $user->getGreenPoints() }}
+                                @if ($user->getUserPointSum() > 0)
+                                    <span class="ms-1" style="color: var(--green-accent-press); font-weight: 600">(+{{ intval($user->getUserPointSum()) }})</span>
+                                @endif
+                            
+                            </p>
                             <p id="greenstatusLabel">Green Status: {{ $user->hasGreenStatus() ? 'Granted' : 'None' }}</p>
                         </div>
 

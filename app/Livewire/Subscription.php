@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Card;
 use App\Models\Subscription as SubscriptionModel;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Carbon\Carbon;
@@ -129,6 +130,7 @@ class Subscription extends Component {
         // Get user Card details from Auth::User()->getCard
         $user = Auth::user();
 
+        ///// Subscription
         // Create Subscription into Subscriptions table
         $subscription = new SubscriptionModel();
 
@@ -140,6 +142,17 @@ class Subscription extends Component {
 
         // Save record
         $subscription->save();
+
+        ///// Transaction
+        $transaction = new Transaction();
+        $transaction->user_id = $this->user->id;
+        $transaction->card_id = $this->user->getCard()->id;
+        $transaction->name = 'Subscription';
+        $transaction->quantity = 1;
+        $transaction->price = 99;
+        $transaction->save();
+
+
         $this->setStatus(self::state_complete);
     }
 }
