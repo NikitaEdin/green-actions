@@ -23,7 +23,9 @@ class ShopController extends Controller {
 
         if(Auth::check()){
             $greenPoints = Auth::user()->getGreenPoints();
-            if($greenPoints >= 80 && $greenPoints < 100){
+            $hasBoughtPoints = Auth::user()->getUserPointSum() > 0;
+            
+            if($greenPoints >= 80 && $greenPoints < 100 && !$hasBoughtPoints){
                 $shortfall = 100 - $greenPoints;
                 $product1 = [
                     'name' => 'Green Points',
