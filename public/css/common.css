@@ -75,3 +75,14 @@
     background-color: var(--green-accent-hover);
     border-color: var(--green-accent-press);
 }
+
+
+/* //////////// Partners section on LandingPage //////////// */
+.partner-logo {
+    filter: grayscale(100%);
+    transition: filter 0.2s ease-in-out;
+}
+
+.partner:hover .partner-logo {
+    filter: grayscale(0%);
+}

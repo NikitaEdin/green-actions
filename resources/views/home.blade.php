@@ -47,6 +47,7 @@
         .hero-reveal {
             font-size: 24px; 
         }
+
     }
     </style>
 
@@ -149,8 +150,51 @@
             </div>
         </section>
 
+           {{-- Partners --}}
+           <section id="partners" class="section-padding my-3" >
+            {{-- Title --}}
+            <div class="text-center">
+                <h2 class="green-line mb-5">Our Partners</h2>
+                <p class="lead">Meet Our Partners: Leaders in innovation, collaboration, and success.</p>
+            </div>
+
+            <div class="col d-flex justify-content-evenly">
+
+                {{-- SSN --}}
+                <div class="row partner">
+                    <a href="https://sustainablescotlandnetwork.org/">
+                        <img src="{{ asset('images/partners/ssn.svg') }}" alt="" class="partner-logo" height="120px">
+                    </a>
+                </div>
+
+                 {{-- BCS --}}
+                 <div class="row partner">
+                    <a href="https://www.bcs.org/">
+                        <img src="{{ asset('images/partners/bcs-black.png') }}" alt="" class="partner-logo" height="120px">
+                    </a>
+                </div>
+
+                 {{-- Edinburgh College --}}
+                 <div class="row partner">
+                    <a href="https://www.edinburghcollege.ac.uk/">
+                        <img src="{{ asset('images/partners/edinburgh-college-logo.png') }}" alt="" class="partner-logo" height="120px">
+                    </a>
+                </div>
+
+                 {{-- Unesco --}}
+                 <div class="row partner">
+                    <a href="https://www.unesco.org/en" class="mt-3">
+                        <img src="{{ asset('images/partners/unesco-blue.svg') }}" alt="" class="partner-logo" height="60px">
+                    </a>
+                </div>
+
+                
+
+            </div>
+        </section>
+
         <!-- Pricing -->
-        <section class="section-padding text-center">
+        <section id="pricing" class="section-padding text-center">
             <h2 class="green-line">Pricing</h2>
             <p>Gain access to valuable resources and networking<br>opportunities while competing for a the prestigious
                 'Green Status'!</p>
@@ -224,6 +268,8 @@
             </div>
 
         </section>
+
+     
 
 
         <!-- Bootstrap JS and dependencies -->
