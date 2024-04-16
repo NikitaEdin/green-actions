@@ -1,3 +1,9 @@
+![Github Created At](https://img.shields.io/github/created-at/nikitaedin/green-actions)
+![GitHub last commit](https://img.shields.io/github/last-commit/nikitaedin/green-actions)
+![GitHub repo size](https://img.shields.io/github/repo-size/nikitaEdin/green-actions)
+
+
+
 # Green Actions 
 A website built using Laravel and Livewire, with a clean design and a friendly user interface.
 <br>
