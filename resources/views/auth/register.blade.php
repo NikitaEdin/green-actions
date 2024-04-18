@@ -80,7 +80,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" name="termsCheckbox" id="termsCheckbox" type="checkbox" value="">
                                 <label class="form-check-label" for="termsCheckbox">
-                                  <span>I accept the <a href="{{ route('terms') }}">Terms and Service</a> and <a href="">Copyright and Privacy</a>.</span>
+                                  <span>I accept the <a href="{{ route('terms') }}">Terms and Service</a> and <a href="{{ route('privacy') }}">Privacy Policy</a>.</span>
                                 </label>
                                 @error('termsCheckbox')
                                 <span class="d-block fs-6 text-danger">{{ $message }}</span>

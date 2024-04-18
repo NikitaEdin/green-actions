@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 class LeaderboardsController extends Controller {
 
     public function show(){
-        // Top test
+        // Get all users
         $allUsers = User::all();
+        // Get users with at least 1 green points
         $topTen = $allUsers->filter(function ($user){
             return $user->getGreenPoints() >= 1;
         });
-
+        // Sort by desc
         $topTen = $topTen->sortByDesc(function ($user) {
             return $user->getGreenPoints();
         });
+        // Get first 10
         $topTen = $topTen->values()->take(10);
 
         // Stats - total users
@@ -35,6 +37,7 @@ class LeaderboardsController extends Controller {
         return view('information.leaderboards', compact('topTen', 'stat_users','stat_total', 'stat_totalStatus'));
     }
 
+    // Return true if given userID is in top10 of leaderboards
     public static function isUserInTop10($userId) {
         // Fetch the top 10 users
         $topUsers = User::all()->filter(function ($user){
@@ -48,10 +51,10 @@ class LeaderboardsController extends Controller {
         $topUsers = $topUsers->values()->take(10)->pluck('id')->toArray();
 
         // Check if the given user ID is in the top 10
-        $position = array_search($userId, $topUsers);
+        $userPosition = array_search($userId, $topUsers);
 
         // Return the index position if the user is in the top 10, otherwise return -1
-        return $position !== false ? $position + 1 : -1;
+        return $userPosition !== false ? $userPosition + 1 : -1;
     }
     
 }

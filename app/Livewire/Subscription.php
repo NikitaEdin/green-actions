@@ -45,7 +45,6 @@ class Subscription extends Component {
 
             $this->setStatus(self::state_active);
         }else{
-
             // No subscription found - check card
             if($this->user->hasCard()){
                 $this->card = $this->user->getCard();
@@ -71,23 +70,23 @@ class Subscription extends Component {
     // Registered panel - getStarted button
     public function getStarted(){
         if($this->currentState == self::state_brief){
-            // Already active subscription
+            // Already has active subscription
             if($this->user->hasValidSubscription()){
                 $this->setStatus(self::state_complete);
 
-            // No sub but has saved card
+            // No subscription, but has saved card
             }elseif($this->user->hasCard()){
                 $this->setStatus(self::state_confirmation);
                  $this->card = Auth::user()->getCard();
             }else{
 
-                // no sub, no card
+                // no subscription, no card
                 $this->setStatus(self::state_card);
             }
         }
     }
 
-    // Card (in case we're missing the card)
+    // Card (in case user is missing a card)
     public function saveCard(){
         if($this->currentState != self::state_card) return;
 

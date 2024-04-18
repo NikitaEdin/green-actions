@@ -9,10 +9,8 @@ use Ramsey\Uuid\Type\Decimal;
 class ShopController extends Controller {
     
     public function show(){
-      
-
         // GreenActions
-        $product1 = [
+        $product_greenPoints = [
             'name' => 'Green Points',
             'price' => 100,
             'quantity' => 1,
@@ -27,7 +25,7 @@ class ShopController extends Controller {
             
             if($greenPoints >= 80 && $greenPoints < 100 && !$hasBoughtPoints){
                 $shortfall = 100 - $greenPoints;
-                $product1 = [
+                $product_greenPoints = [
                     'name' => 'Green Points',
                     'quantity' => $shortfall,
                     'price' => 100,
@@ -39,7 +37,7 @@ class ShopController extends Controller {
        
         
         // Donation
-        $product2 = [
+        $product_donation = [
             'name' => 'Donation',
             'price' => 10,
             'quantity' => 1,
@@ -49,12 +47,10 @@ class ShopController extends Controller {
 
         $donation = CartBadge::getItem('Donation');
         if($donation){
-            $product2['quantity'] = $donation['quantity'];
+            $product_donation['quantity'] = $donation['quantity'];
         }
 
-
-
-        $products = [$product1, $product2];
+        $products = [$product_greenPoints, $product_donation];
 
         return view('shop.show', compact('products'));
     }
@@ -87,17 +83,14 @@ class ShopController extends Controller {
         return redirect()->route('pay-cart')->with('payment', 'ready');   
     }
 
-
-
-
     // Payment - final
     public function pay(){
         // can view payment ONLY if confirmed cart
-        // if(session()->has('payment')){
+        if(session()->has('payment')){
             $cart = CartBadge::getCart();
             return view('shop.cart-payment', compact('cart'));
-        // }else{
-        //     return redirect()->route('shop');
-        // }
+        }else{
+            return redirect()->route('shop');
+        }
     }
 }

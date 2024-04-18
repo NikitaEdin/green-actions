@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,20 +12,19 @@ class AuthController extends Controller
 
 
     public function store(){
-        // validate
+        // Validate user inputs
         $validated = request()->validate([
             'username' => 'required|min:3|max:40|unique:users,username',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:3'
         ]);
 
-        // Accepted terms
+        // Check for accepted terms
         if (!request()->has('termsCheckbox')) {
             return redirect()->back()->withInput()->withErrors(['termsCheckbox' => 'Please accept the terms and conditions.']);
         }
-        
 
-        // create user and save to DB
+        // Create user and save to DB
         $user = User::create([
             'username' => $validated['username'],
             'email' => $validated['email'],
@@ -34,28 +32,30 @@ class AuthController extends Controller
             'permission_id' => 0
         ]);
 
-        // redirect
+        // Redirect
         return redirect()->route('register')->with('success', 'Account created!');
     }
 
     public function login(){ return view('auth.login');}
 
     public function authenticate(){
-        // validate
+        // Validate
         $validated = request()->validate([
             'username' => 'required',
             'password' => 'required|min:3'
         ]); 
         $remember = request()->has('remember');
 
-        // user exists?
+        // User exists?
         if(Auth::attempt($validated, $remember)){
-            // login
+            // Login
             request()->session()->regenerate();
-            return redirect()->route('profile')->with('success', 'Login Successful!');
+            return redirect()->route('profile')
+                ->with('success', 'Login Successful!');
         }else{
-            // invalid
-            return redirect()->route('login')->withErrors(['auth' => 'No matching user found with the provided email and password.']);
+            // Invalid cred, redirect with error message
+            return redirect()->route('login')
+            ->withErrors(['auth' => 'No matching user found with the provided email and password.']);
         }
     }
 

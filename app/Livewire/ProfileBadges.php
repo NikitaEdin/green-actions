@@ -25,7 +25,6 @@ class ProfileBadges extends Component
         // full profile details (all fields are filled)
         $this->badge_fulldetails_enabled = $this->user->hasFullDetails();
 
-        // TODO: third badge
     }
 
     public function render()

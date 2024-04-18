@@ -34,8 +34,6 @@
 
                     {{-- Livewire component --}}
                     @livewire('forgot-password')
-                        
-                       
                 </div>
             </div>
         </div>

@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\GreenAction;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
+    // Show user dashboard/profile
     public function profile(){
         return $this->show(Auth::user());
     }
 
+    // Show user profile with given User object
     public function show(User $user){
+        // Get user GreenActions and their position in the competition
         $greenActions = GreenAction::getAllAvailable();
         $compPos = LeaderboardsController::isUserInTop10($user->id);
-
+        // Display users view, and pass parameters to display
         return view('users.show', compact('user', 'greenActions', 'compPos'));
     }
 
@@ -42,7 +44,6 @@ class UserController extends Controller {
        
         // Successfully updated
         return redirect()->route('profile')->with('success', 'Detailed Updated!');
-       
     }
 
     public function showUser($id){

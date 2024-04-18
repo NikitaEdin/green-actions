@@ -20,7 +20,8 @@ class CartPaymentComp extends Component{
         $this->user = Auth::user();
         $this->calcTotal();
     }
-
+    
+    // Calculate total cart amount
     public function calcTotal(){
         foreach($this->cart as $item){
             $this->total += $item['price'] * $item['quantity'];

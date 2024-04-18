@@ -16,19 +16,29 @@ class CartBadge extends Component {
         return view('livewire.cart-badge');
     }
 
+    // Update cart
     public function updateCart(){
+        // Get cart
         $cart = CartBadge::getCart();
+        // Valid cart?
         if($cart){
+            // get total cart items
             $total = CartBadge::getCount();
+            // display '10+' if above 10 items
             $this->cart_items = $total > 10 ? '10+' : $total;
         }else{
+            // set cart items to zero
             $this->cart_items = 0;
         }
     }
 
+    // Add item to cart
     public function addItem($product){
+        // get cart
         $cart = CartBadge::getCart();
+        // add item to cart
         $cart[] = $product;
+        // save changes
         CartBadge::saveCart($cart);
     }
 
@@ -72,10 +82,8 @@ class CartBadge extends Component {
     
     
 
-    public function getAllItems(){
-        //return CartBadge::getCart();
-        dd(CartBadge::getCart());
-    }
+    // unused, for testing purposes
+    public function getAllItems(){ dd(CartBadge::getCart()); }
 
     public function getCount(){
         return count(CartBadge::getCart());
@@ -86,24 +94,26 @@ class CartBadge extends Component {
     }
     
 
+    // Get cart from session
     public static function getCart() {
         $userId = Auth::id();
         return Session::get("user_cart_$userId", []);
     }
 
+    // Save cart to session
     public static function saveCart($cart)  {
         $userId = Auth::id();
         Session::put("user_cart_$userId", $cart);
     }
 
     
+    // Traceable method, will be called outside of current component
     #[On('add-cart')] 
     public function addToCart($product) { 
-         $product = $product['product'];
-        // if(!CartBadge::itemExists($product)){
-        //     $this->addItem($product); 
-        // }
+        // Get product structure from passed object (array)
+        $product = $product['product'];
 
+        // Get cart reference
         $cart = self::getCart();
         $found = false;
 
@@ -117,7 +127,7 @@ class CartBadge extends Component {
             }
         }
 
-        // If not found, add new
+        // If not found, add as new item
         if(!$found){
             $this->addItem($product); 
         }
@@ -131,15 +141,17 @@ class CartBadge extends Component {
     public static function globalRemoveItem($product){
         $itemName = $product['name'];
 
+        // Get cart
         $cart = CartBadge::getCart();
     
+        // remove item from cart
         foreach ($cart as $index => $item) {
             if ($item['name'] === $itemName) {
                 unset($cart[$index]);
                 break; 
             }
         }
-    
+        // save changes
         CartBadge::saveCart($cart);
     }
 

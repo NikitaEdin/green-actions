@@ -42,23 +42,25 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    ////////// Database relationships //////////
     public function permission(){ return $this->belongsTo(Permission::class);}
     public function tickets(){ return $this->hasMany(Ticket::class);}
     public function subscriptions(){ return $this->hasMany(Subscription::class);}
     public function userpoints(){ return $this->hasMany(Userpoints::class);}
 
-    // Associated card
+    ////////// Associated card //////////
     public function card(){ return $this->hasOne(Card::class); }
     public function getCard(){ return $this->card()->first(); }
     public function hasCard(){ return $this->card()->exists(); }
 
     // Subscriptions
     public function hasValidSubscription() {
+        // Find first and latest subscription linked with User
         $latestSubscription = $this->subscriptions()->latest()->first();
     
         // Not subscription found
         if (!$latestSubscription) { return false; }
-    
+        // Subscription found - return true if dates are valid
         return $latestSubscription->isValid();
     }
 
@@ -72,8 +74,9 @@ class User extends Authenticatable
     }
     
 
-
+    // Get display name
     public function displayName(){
+        // Prioritise user defined name over username
         if($this->name){
             return $this->name;
         }else{
@@ -81,6 +84,7 @@ class User extends Authenticatable
         }
     }
 
+    // Display full name, user defined name with username in brackets.
     public function displayNameFull(){
         if($this->name){
             return $this->name . ' (' . $this->username . ')';
@@ -89,6 +93,7 @@ class User extends Authenticatable
         }
     }
 
+    // Returns true is User has Admin permission
     public function isAdmin(){
         return $this->permission->permission_name === 'Admin';
     }
@@ -113,10 +118,13 @@ class User extends Authenticatable
         }
     }
 
+    // Returns true if User has 100 green points
     public function hasGreenStatus(){
         return $this->getGreenPoints() >= 100;
     }
 
+
+    // Returns true if User has assigned profile details (contact details, contact number, bio)
     public function hasFullDetails(){
         return isset($this->contact) && isset($this->number) && isset($this->bio);
     }

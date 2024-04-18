@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-
-class AccountSettings extends Component
-{
+class AccountSettings extends Component {
 
     public $user;
     public $email;

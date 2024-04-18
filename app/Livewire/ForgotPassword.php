@@ -47,7 +47,6 @@ class ForgotPassword extends Component
         $this->validate([ 
             'password' => 'required|confirmed|min:3'
         ]);
-
         
 
         // Update new password
