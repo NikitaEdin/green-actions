@@ -132,4 +132,42 @@ class User extends Authenticatable
     public function getTickets(){
         return Ticket::where('user_id', $this->id);
     }
+
+    public function hasAward(){
+        // if($this->getGreenPoints() >= 50){
+        //     return true;
+        // }
+
+        return true; // all get an award
+    }
+
+    public function getAwardTitle(){
+        if($this->getGreenPoints() >= 80){
+            return "Gold Award";
+        }else if($this->getGreenPoints() >= 60){
+            return "Silver Award";
+        }else{
+            return "Bronze Award";
+        }
+    }
+
+    public function getAwardImage(){
+        if($this->getGreenPoints() >= 80){
+            return "award_gold.png";
+        }else if($this->getGreenPoints() >= 60){
+            return "award_silver.png";
+        }else{
+            return "award_bronze.png";
+        }
+    }
+
+    public function getAwardColour(){
+        if($this->getGreenPoints() >= 80){
+            return "gold";
+        }else if($this->getGreenPoints() >= 60){
+            return "lightgray";
+        }else{
+            return "darkgoldenrod";
+        }
+    }
 }

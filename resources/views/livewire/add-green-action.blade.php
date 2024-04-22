@@ -28,6 +28,7 @@
                 <button name="con-level-high" style="text-transform: uppercase;" wire:click="setActiveButton('high')" type="button" class="btn btn-outline-primary con-level con-level-high{{ $activeButton === 'high' ? '-active' : '' }}">
                     high
                 </button>
+                <p name="">{{ $selectedPoints }}</p>
             </div>
         </div>
 

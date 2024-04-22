@@ -24,6 +24,10 @@ class UserController extends Controller {
         return view('users.edit-details');
     }
 
+    public function award(){
+        return view('award.show');
+    }
+
     public function update(){
         // validate
         $validated = request()->validate([

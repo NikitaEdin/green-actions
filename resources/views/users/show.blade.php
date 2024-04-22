@@ -76,6 +76,14 @@
                         <!-- Edit button -->
                         <div class="p-2">
                             <div class="d-flex justify-content-start">
+                                @if (Auth::user()->hasAward())
+                                    {{-- Award --}}
+                                    <a href="{{ route('award') }}" class="btn btn-outline-success me-3">
+                                    <p style="display: inline; margin: 0;"> View Award</p>
+                                    <i class="fa-solid fa-medal"></i>
+                                </a> 
+                                @endif
+
                                 {{-- Public self profile --}}
                                 <a href="{{ route('user.show', ['id' => $user->id]) }}" class="btn btn-outline-success me-3">
                                     <p style="display: inline; margin: 0;"> Public Profile</p>

@@ -54,6 +54,7 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'show'])->name(
 
 //// User Profile ////
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
+Route::get('/award', [UserController::class, 'award'])->middleware('auth')->name('award');
 // edit profile
 Route::get('/profile/edit', [UserController::class, 'updateDetails'])->middleware('auth')->name('updateDetails');
 Route::post('/profile/edit', [UserController::class, 'update'])->middleware('auth');

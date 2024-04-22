@@ -14,6 +14,8 @@ class AddGreenAction extends Component
     public $activeButton;
     public $selectedAction;
 
+    public $selectedPoints = "0 points";
+
     // description
     public $actionDescription;
     public $actionDescriptionTitle;
@@ -68,6 +70,15 @@ class AddGreenAction extends Component
         // Different button clicked
         if($name != $this->activeButton){
             $this->activeButton = $name;
+            
+            if($name === "none"){
+                $this->selectedPoints = "0 points";
+            }else if($name === "medium"){
+                $this->selectedPoints = "+5 points";
+            }else if($name === "high"){
+                $this->selectedPoints = "+10 points";
+            }
+
         }else{
             // Same button - untoggle
             $this->activeButton = null;
