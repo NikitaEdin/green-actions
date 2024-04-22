@@ -25,7 +25,12 @@ class UserController extends Controller {
     }
 
     public function award(){
-        return view('award.show');
+        // Navigate to award only if user has one
+        if(Auth::user()->hasAward())
+            return view('award.show');
+        else
+            // Otherwise, redirect to profile with message
+            return redirect()->route('profile')->with('error', 'Not enough GreenPoints to access the Award.');
     }
 
     public function update(){

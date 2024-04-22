@@ -98,10 +98,12 @@ class User extends Authenticatable
         return $this->permission->permission_name === 'Admin';
     }
 
+    // Get GreenPoints, created by user
     public function getUserActions(){
         return $this->hasMany(UserAction::class)->orderBy('updated_at', 'desc');
     }
 
+    // Get UserPoints, purchased by user (if any)
     public function getUserPoints(){
         return $this->hasMany(Userpoints::class)->orderBy('updated_at', 'desc');
     }
@@ -134,11 +136,13 @@ class User extends Authenticatable
     }
 
     public function hasAward(){
-        // if($this->getGreenPoints() >= 50){
-        //     return true;
-        // }
+        // At least 5 green-points
+        if($this->getGreenPoints() >= 5){
+            return true;
+        }
+        return false;
 
-        return true; // all get an award
+        // return true; // all get an award
     }
 
     public function getAwardTitle(){

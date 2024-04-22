@@ -78,24 +78,6 @@
                             </li>
 
                            
-
-                            {{-- Our Mission --}}
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="#">Our Mission</a>
-                            </li> --}}
-
-                            {{-- Competition info --}}
-                            {{-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Competition
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">About Competition</a></li>
-                                    <li><a class="dropdown-item" href="#">Leaderboards</a></li>
-                                </ul>
-                            </li> --}}
-
                             {{-- Leaderboards --}}
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('leaderboards') ? 'active' : '' }}" class="nav-link" href="{{ route('leaderboards') }}">Competition</a>
@@ -106,7 +88,6 @@
                                 <a class="nav-link {{ Route::is('shop') ? 'active' : '' }}" href="{{ route('shop') }}">Shop</a>
                             </li>
 
-                        
 
                         </ul>
 
@@ -153,6 +134,13 @@
                             
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                {{-- Admin Badge --}}
+                                @if (Auth::user()->isAdmin())
+                                    <span class="badge rounded-pill text-bg-danger ms-1">Admin</span>
+                                @endif
+
+                                {{-- Full display name --}}
                                 <span class="mx-2">{{ Auth()->User()->displayNameFull() }}</span>
                                     <div class="profile-pic">
                                         <i class="fas fa-user-circle"></i>
@@ -160,6 +148,16 @@
                                 </a>
                                
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                    {{-- Show admin panel for Admin users --}}
+                                    @if (Auth::user()->isAdmin())
+                                        <li><a class="dropdown-item" 
+                                            style="font-weight: bold"  href="{{ route('profile') }}">
+                                            <i class="fa-solid fa-gear fa-fw"></i>
+                                            Admin Panel</a></li>
+                                            <hr class="dropdown-divider">
+                                    @endif
+
                                     <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fa-solid fa-user fa-fw"></i>
                                             Profile</a></li>
                                     <li><a class="dropdown-item" href="{{ route('settings') }}"><i class="fas fa-cog fa-fw"></i>
