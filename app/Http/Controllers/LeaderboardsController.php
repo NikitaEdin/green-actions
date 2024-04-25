@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 
 class LeaderboardsController extends Controller {
 
+    const REMOVE_BANNED = true;
+
+
     public function show(){
         // Get all users
         $allUsers = User::all();
         // Get users with at least 1 green points
         $topTen = $allUsers->filter(function ($user){
-            return $user->getGreenPoints() >= 1;
+            return $user->getGreenPoints() >= 1 && (!self::REMOVE_BANNED || !$user->isDeactivated());
         });
         // Sort by desc
         $topTen = $topTen->sortByDesc(function ($user) {
@@ -41,7 +44,7 @@ class LeaderboardsController extends Controller {
     public static function isUserInTop10($userId) {
         // Fetch the top 10 users
         $topUsers = User::all()->filter(function ($user){
-            return $user->getGreenPoints() >= 1;
+            return $user->getGreenPoints() >= 1  && (!self::REMOVE_BANNED || !$user->isDeactivated());
         });
 
         $topUsers = $topUsers->sortByDesc(function ($user) {

@@ -47,6 +47,11 @@
                                     <span class="badge px-2 py-1 rounded-pill text-bg-danger ms-1">Admin</span>
                                 @endif
 
+                                 {{-- Deactivated Badge --}}
+                                @if ($user->isDeactivated())
+                                    <span class="badge px-2 py-1 rounded-pill text-bg-danger ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Account Deactivated">BANNED</span>
+                                @endif
+
                                 {{-- Compeition Ranking --}}
                                 @if ($compPos === 1)
                                     <span class="px-3 py-2 badge rounded-pill text-bg-dark ms-1"

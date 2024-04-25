@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Livewire\CartBadge;
 use Illuminate\Support\Facades\Auth;
-use Ramsey\Uuid\Type\Decimal;
 
 class ShopController extends Controller {
     
+    // STATIC prices
+    public static $donation_price = 10;
+    public static $shortfall_price = 100;
+
+    
+
     public function show(){
         // GreenActions
         $product_greenPoints = [
@@ -28,7 +33,7 @@ class ShopController extends Controller {
                 $product_greenPoints = [
                     'name' => 'Green Points',
                     'quantity' => $shortfall,
-                    'price' => 100,
+                    'price' => $this->shortfall_price,
                     'img' => 'images/products/product-points.png',
                     'is_available' => true
                 ];
@@ -39,7 +44,7 @@ class ShopController extends Controller {
         // Donation
         $product_donation = [
             'name' => 'Donation',
-            'price' => 10,
+            'price' => self::$donation_price,
             'quantity' => 1,
             'img' => 'images/products/product-donation.png',
             'is_available' => true

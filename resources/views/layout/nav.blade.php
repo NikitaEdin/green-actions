@@ -152,8 +152,8 @@
                                     {{-- Show admin panel for Admin users --}}
                                     @if (Auth::user()->isAdmin())
                                         <li><a class="dropdown-item" 
-                                            style="font-weight: bold"  href="{{ route('profile') }}">
-                                            <i class="fa-solid fa-gear fa-fw"></i>
+                                            style="font-weight: bold"  href="{{ route('admin') }}">
+                                            <i class="fa-solid fa-screwdriver-wrench fa-fw"></i>
                                             Admin Panel</a></li>
                                             <hr class="dropdown-divider">
                                     @endif

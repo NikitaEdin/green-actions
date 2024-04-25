@@ -174,4 +174,26 @@ class User extends Authenticatable
             return "darkgoldenrod";
         }
     }
+
+
+    ///////// Account Status /////////
+    const STATUS_INACTIVE = 'Inactive';
+    const STATUS_ACTIVE = 'Active';
+    const STATUS_DEACTIVATED = 'Deactivated';
+
+    // Getters
+    public function GetStatus(){ return $this->account_status; }
+    public function isDeactivated() { return $this->account_status === self::STATUS_DEACTIVATED; }
+    public function isActive() { return $this->account_status === self::STATUS_ACTIVE; }
+    public function isInactive() { return $this->account_status === self::STATUS_INACTIVE; }
+
+    // Set Active (only if inactive)
+    public function setActive() {
+        if ($this->isInactive()) {
+            $this->account_status = self::STATUS_ACTIVE;
+            $this->save();
+        }
+    }
+
+    
 }

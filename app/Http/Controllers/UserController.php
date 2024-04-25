@@ -60,4 +60,24 @@ class UserController extends Controller {
         $compPos = LeaderboardsController::isUserInTop10($user->id);
         return view('users.show-user', compact('user', 'compPos'));
     }
+
+    public function history(){
+        $actions = Auth::user()->getUserActions()->with('getGreenAction')->get();
+
+        // Calculate accumulated points by dates (for chart)
+        $accumulatedPointsByDate = [];
+
+        $totalPoints = 0;
+        // Iterate over actions in reverse 
+        for ($i = count($actions) - 1; $i >= 0; $i--) {
+            $action = $actions[$i];
+            $date = $action->updated_at->toDateString();
+            // Calculate points for this date
+            $totalPoints += $action->points;
+            // Set accumulated points for date
+            $accumulatedPointsByDate[$date] = $totalPoints;
+        }
+        
+        return view('users.history', compact('actions', 'accumulatedPointsByDate'));
+    }
 }

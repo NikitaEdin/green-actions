@@ -47,6 +47,18 @@
             </div>
         @endif
 
+
+        @if (Auth::user()->isDeactivated())
+            <div class="container mt-5 p-5 d-flex justify-content-center align-items-center"
+            style="background:white; border-radius: 1rem; outline: 1.5px solid rgba(255, 0, 0, 1); background-color: rgba(255, 0, 0, 0.05);">
+                <div class="text-center">
+                    <h5>Oh no!</h5>
+                    <p>Your account has been deactivated by an administrator.</p>
+                </div>
+            </div>
+        @else
+      
+
         <!-- Section: Profile -->
         <section id="profile">
             <div class="container mt-3 pb-5" style="background-color: white;">
@@ -196,7 +208,16 @@
         @if ($user->hasValidSubscription() || $user->isAdmin())
             <section id="action-history">
                 <div id="actions-list" class="container" style="margin-top: 5rem;">
-                    <h4>Your Green Actions</h4>
+                    <div class="row">
+                        <div class="col">
+                            <h4>Your Green Actions</h4>
+                        </div>
+                        <div class="col text-end" >
+                              <a href="{{ route('history') }}" class="btn btn-outline-success me-3">
+                                    <p style="display: inline; margin: 0;"> View History</p></a>
+                        </div>
+                    </div>
+                    
                     <hr>
 
                     {{-- Livewire: view and manage existing green actions --}}
@@ -209,6 +230,9 @@
 
         <!-- Empty spacer -->
         <div style="padding-top: 20rem;"></div>
+
+
+        @endif
 
 
 

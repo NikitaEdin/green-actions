@@ -8,6 +8,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SubController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Livewire\AdminUserEdit;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +57,8 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'show'])->name(
 //// User Profile ////
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
 Route::get('/award', [UserController::class, 'award'])->middleware('auth')->name('award');
+Route::get('/profile/history', [UserController::class, 'history'])->middleware('auth')->name('history');
+
 // edit profile
 Route::get('/profile/edit', [UserController::class, 'updateDetails'])->middleware('auth')->name('updateDetails');
 Route::post('/profile/edit', [UserController::class, 'update'])->middleware('auth');
@@ -87,3 +91,7 @@ Route::get('/cart', [ShopController::class, 'cart'])->middleware('auth')->name('
 Route::post('/cart', [ShopController::class, 'confirm'])->middleware('auth')->name('submit-cart');
 
 Route::get('/cart-payment', [ShopController::class, 'pay'])->middleware('auth')->name('pay-cart');
+
+///// Admin  /////
+Route::get('/admin', [AdminController::class, 'show'])->middleware('auth', 'admin')->name('admin');
+Route::get('/admin/reset-green-actions', [AdminController::class, 'resetGreenActions'])->middleware('auth', 'admin')->name('admin.reset-green-actions');

@@ -14,9 +14,11 @@ class AuthController extends Controller
     public function store(){
         // Validate user inputs
         $validated = request()->validate([
-            'username' => 'required|min:3|max:40|unique:users,username',
+            'username' => 'required|min:3|max:40|unique:users,username,not_regex:/\s+/',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:3'
+        ], [
+            'username.regex' => 'The :attribute cannot contain spaces.',
         ]);
 
         // Check for accepted terms
@@ -48,10 +50,18 @@ class AuthController extends Controller
 
         // User exists?
         if(Auth::attempt($validated, $remember)){
+            //  // Check if account is banned
+            // if (Auth::user()->isDeactivated()) {
+            //     Auth::logout();
+            //     return redirect()->route('login')->withErrors(['auth' => 'Your account is deactivated.']);
+            // }
+
+
             // Login
             request()->session()->regenerate();
-            return redirect()->route('profile')
-                ->with('success', 'Login Successful!');
+            // Activate account
+            Auth::user()->SetActive();
+            return redirect()->route('profile') ->with('success', 'Login Successful!');
         }else{
             // Invalid cred, redirect with error message
             return redirect()->route('login')
