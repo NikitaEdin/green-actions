@@ -11,14 +11,21 @@ class AuthController extends Controller
     public function register(){ return view('auth.register');}
 
 
+    
+    // Login policy for deactivated/banned account
+    const bannedCantLogin = false;
+
+
+
     public function store(){
         // Validate user inputs
         $validated = request()->validate([
-            'username' => 'required|min:3|max:40|unique:users,username,not_regex:/\s+/',
-            'email' => 'required|email',
+            'username' => 'required|min:3|max:40|regex:/^\S*$/|unique:users,username',
+            'email' => 'required|email|regex:/^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/ ',
             'password' => 'required|confirmed|min:3'
         ], [
             'username.regex' => 'The :attribute cannot contain spaces.',
+            'email.regex' => 'The given :attribute format is incorrect.'
         ]);
 
         // Check for accepted terms
@@ -51,10 +58,10 @@ class AuthController extends Controller
         // User exists?
         if(Auth::attempt($validated, $remember)){
             //  // Check if account is banned
-            // if (Auth::user()->isDeactivated()) {
-            //     Auth::logout();
-            //     return redirect()->route('login')->withErrors(['auth' => 'Your account is deactivated.']);
-            // }
+            if (AuthController::bannedCantLogin && Auth::user()->isDeactivated()) {
+                Auth::logout();
+                return redirect()->route('login')->withErrors(['auth' => 'Your account is deactivated.']);
+            }
 
 
             // Login

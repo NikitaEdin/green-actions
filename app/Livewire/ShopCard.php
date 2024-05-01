@@ -22,6 +22,8 @@ class ShopCard extends Component
     public function addToCart(){
         if(Auth::check()){
             $this->dispatch('add-cart', ['product'=> $this->product]);
+        }else{
+            return redirect()->route('login');
         }
     }
 }

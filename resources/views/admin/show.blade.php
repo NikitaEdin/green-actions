@@ -17,7 +17,7 @@
                     <ul style="list-style-type: none;" class="mx-0 px-0">
                         <li><a class="dropdown-item dropdown-item-admin" data-target="dashboard" href="#">Admin Dashboard</a></li>
                         <li><a class="dropdown-item dropdown-item-admin" data-target="users" href="#">Users</a></li>
-                        <li><a class="dropdown-item dropdown-item-admin" href="#">Coming soon</a></li>
+                        {{-- <li><a class="dropdown-item dropdown-item-admin" href="#">Coming soon</a></li> --}}
                     </ul>
             </div>
 

@@ -30,7 +30,7 @@ class AdminController extends Controller {
         // Stats - get all donations
         $stat_totalDonations = '£' . Transaction::where('name', 'Donation')
             ->get() ->sum(function ($transaction) {
-                return $transaction->quantity * ShopController::$donation_price;
+                return $transaction->quantity * ShopController::donation_price;
             });
 
 

@@ -147,7 +147,7 @@
 
                     @if($showWarning)
                         <div class="alert alert-warning" role="alert">
-                            Warning: Deactivating is equivalent to banning, user won't be able to login.
+                            Warning: Deactivating is equivalent to banning, user won't be able to access their profile/dashboard.
                         </div>
                     @endif
 

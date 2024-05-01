@@ -41,7 +41,7 @@
                         {{-- Username --}}
                         <div class="mb-3">
                             <input type="text" id="username" name="username" class="form-control"
-                                class="form-controlbg-light fs-6" placeholder="Username">
+                                class="form-controlbg-light fs-6" placeholder="Username" value="{{ old('username') }}">
                             @error('username')
                                 <span class="d-block fs-6 text-danger">{{ $message }}</span>
                             @enderror
@@ -50,8 +50,8 @@
 
                         {{-- Email --}}
                         <div class="mb-3">
-                            <input type="email" id="email" name="email"
-                                class="form-control bg-light fs-6" placeholder="Email address">
+                            <input type="email" id="email" name="email" 
+                                class="form-control bg-light fs-6" placeholder="Email address" value="{{ old('email') }}">
                             @error('email')
                                 <span class="form-label d-block fs-6 text-danger">{{ $message }}</span>
                             @enderror

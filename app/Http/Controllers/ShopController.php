@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class ShopController extends Controller {
     
     // STATIC prices
-    public static $donation_price = 10;
-    public static $shortfall_price = 100;
+    const donation_price = 10;
+    const shortfall_price = 100;
 
     
 
@@ -33,7 +33,7 @@ class ShopController extends Controller {
                 $product_greenPoints = [
                     'name' => 'Green Points',
                     'quantity' => $shortfall,
-                    'price' => $this->shortfall_price,
+                    'price' => self::shortfall_price,
                     'img' => 'images/products/product-points.png',
                     'is_available' => true
                 ];
@@ -44,7 +44,7 @@ class ShopController extends Controller {
         // Donation
         $product_donation = [
             'name' => 'Donation',
-            'price' => self::$donation_price,
+            'price' => self::donation_price,
             'quantity' => 1,
             'img' => 'images/products/product-donation.png',
             'is_available' => true
